@@ -1,9 +1,22 @@
-<section>
-	<header>
-	<h1>Listing</h1>
-	</header>
-	<ul>
-		<li><a ui-sref="photo.detail({photoId:1})">Item 1</a></li>
-		<li><a ui-sref="photo.detail({photoId:2})">Item 2</a></li>
+<section class="photo--list">
+	<ul ng-repeat="photo in list">
+
+		<li class="photo--item">
+			<a class="item--link" ui-sref="photo.detail({photoId:photo.id})">
+
+				<div class="item--logo">
+					<img ng-src="{{photo.imgsrc}}" alt="{{photo.title}}" />
+				</div>
+
+				<div class="item--detail">
+					<h3 class="item--title">{{photo.title}}</h3>
+					<a href="{{photo.author.link})" target="_blank">{{photo.author.name}}</a>
+					<span>{{photo.date}}</span>
+					<a href="{{photo.link}}" target="_blank">View on Flickr</a>
+				</div>
+
+			</a>
+		</li>
+
 	</ul>
 </section>

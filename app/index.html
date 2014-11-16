@@ -18,19 +18,24 @@
   <link rel="stylesheet" type="text/css" media="all" href="/css/styles.css">
 
   <!-- Angular $locationProvider Base Href-->
-  <meta name="fragment" content="!" />
   <base href="/">
 </head>
 
 <body ng-app="photostuff">
 
   <!-- HEADER -->
-  <header>
-    <h1>PhotoStuff</h1>
+  <header class="header">
+    <h1 class="header__title">PhotoStuff</h1>
+    <nav class="header__menu">
+      <ul>
+        <li class="menu__item--list"><a ui-sref="photo.list">Photos</a></li>
+        <li class="menu__item--about"><a ui-sref="about">About</a></li>
+        <li class="menu__item--contact"><a ui-sref="contact">Contact</a></li>
+    </nav>
   </header>
 
   <!-- CONTAINER -->
-  <ui-view>Empty content</ui-view>
+  <ui-view class="container">Empty content</ui-view>
 
 
   <!-- FOOTER -->
