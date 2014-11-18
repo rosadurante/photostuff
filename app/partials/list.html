@@ -1,8 +1,8 @@
 <section class="photo--list">
-	<ul ng-repeat="photo in list">
+	<ul>
 
-		<li class="photo--item">
-			<a class="item--link" ui-sref="photo.detail({photoId:photo.id})">
+		<li ng-repeat="photo in list" class="photo--item">
+			<div class="item--link" ui-sref="photo.detail({photoId:photo.id})">
 
 				<div class="item--logo">
 					<img ng-src="{{photo.imgsrc}}" alt="{{photo.title}}" />
@@ -15,7 +15,7 @@
 					<a href="{{photo.link}}" target="_blank">View on Flickr</a>
 				</div>
 
-			</a>
+			</div>
 		</li>
 
 	</ul>
