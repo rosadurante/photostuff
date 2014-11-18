@@ -1,4 +1,4 @@
-/* globals angular */
+/* globals angular, _ */
 
 /**
  * photo.js
@@ -9,37 +9,10 @@
 
 'use strict';
 
-var photo = {
-
-	// Dummy data
-	data: [{
-		id: 1,
-		title: 'cats!',
-		imgsrc: 'http://stylonica.com/wp-content/uploads/2014/03/cats-16140154-1920-1080.jpg',
-		date: 'Nov 23rd 2013',
-		link: 'http://google.co.uk',
-		description: 'description',
-		author: {
-			link: 'http://google.co.uk',
-			name: 'Perico el de los palotes'
-		},
-		tags: ['tag 1', 'tag 2', 'tag 3']
-	}, {
-		id: 2,
-		title: 'dogs!',
-		imgsrc: 'http://www.metrodogstop.com/cms/wp-content/uploads/2013/05/cute-dog.jpg',
-		date: 'Nov 24th 2013',
-		link: 'http://google.co.uk',
-		description: 'description',
-		author: {
-			link: 'http://google.co.uk',
-			name: 'Maria la hierbabuena'
-		},
-		tags: ['tag 3', 'tag 2', 'tag 1']
-	}]
-};
-
 angular.module('photo', ['ui.router'])
+
+	.constant('mainURL', 'http://api.flickr.com/services/feeds/photos_public.gne')
+
 	.config(['$locationProvider', '$stateProvider',
 
 		function ($locationProvider, $stateProvider) {
@@ -80,26 +53,76 @@ angular.module('photo', ['ui.router'])
 		}
 	])
 
-	.factory('photoService', function () {
+	.factory('photoService', ['$http', 'mainURL',
+		function ($http, url) {
 
-		// Modules which will get data from resource provided (now, dummy data)
-		// and define a manager to provide those data nicely.
+			// Modules which will get data from resource provided (now, dummy data)
+			// and define a manager to provide those data nicely.
 
-		var _getList = function () { return photo.data; },
-			_getById = function (id) {
-				var selected;
-				angular.forEach(photo.data, function (item) {
-					if (!selected && item.id.toString() === id) { selected = item; }
-				});
+			var _id = 0,
+				_list = [],
+				_params = {
+					page: 1,
+					tags: 'cat',
+					tagmode: 'all',
+					format: 'json',
+					jsoncallback: 'JSON_CALLBACK'
+				},
 
-				return selected;
+				_getList = function () {
+					_id = 0;
+					return $http({ url: url, params: _params, method: 'jsonp' }).then(
+						function (response) {
+							// Success: fill _list variable and return it.
+							// Before return it, parse all items to get the proper object to use in the controller.
+							_list = _parseData(response.data.items);
+							return _list;
+						},
+						function () {
+							console.log('Error fetching from ', url, _params);
+						}
+					);
+				},
+
+				_getById = function (id) {
+
+					if (!_list.length) {
+						return _getList().then(function () {
+							return _.find(_list, function (photo) { return photo.id.toString() === id; });
+						});
+					} else {
+						return _.find(_list, function (photo) { return photo.id.toString() === id; });
+					}
+				},
+
+				_parseData = function (photos) {
+					var parsedData = [];
+					_.each(photos, function (item) {
+						parsedData.push({
+							id: ++_id,
+							link: item.link,
+							title: item.title,
+							imgsrc: item.media.m,
+							date: new Date(item.published),
+							description: item.description,
+							tags: item.tags.split(' '),
+							author: {
+								id: item.author_id,
+								name: item.author
+							}
+						});
+					});
+
+					return parsedData;
+				};
+
+			// Return the interface, functions that only would be need outside the service.
+			return {
+				getList: _getList,
+				getById: _getById
 			};
-
-		return {
-			getList: _getList,
-			getById: _getById
-		};
-	})
+		}
+	])
 
 	.controller('photoListCtrl', ['$scope', 'list',
 		function ($scope, list) { $scope.list = list; }
