@@ -63,6 +63,7 @@ angular.module('photo', ['ui.router'])
 				_list = [],
 				_params = {
 					page: 1,
+					lang: 'en-us',
 					tags: 'cat',
 					tagmode: 'all',
 					format: 'json',
@@ -71,6 +72,8 @@ angular.module('photo', ['ui.router'])
 
 				_getList = function () {
 					_id = 0;
+					_params.page = 1;
+
 					return $http({ url: url, params: _params, method: 'jsonp' }).then(
 						function (response) {
 							// Success: fill _list variable and return it.
@@ -93,6 +96,19 @@ angular.module('photo', ['ui.router'])
 					} else {
 						return _.find(_list, function (photo) { return photo.id.toString() === id; });
 					}
+				},
+
+				_getNextPage = function () {
+					_params.page += 1;
+					return $http({ url: url, params: _params, method: 'jsonp' }).then(
+						function (response) {
+							debugger;
+							_list = _.union(_list, _parseData(response.data.items));
+							return _list;
+						},
+						function () {
+							console.log('error fetching from ', url, _params);
+						});
 				},
 
 				_parseData = function (photos) {
@@ -119,7 +135,8 @@ angular.module('photo', ['ui.router'])
 			// Return the interface, functions that only would be need outside the service.
 			return {
 				getList: _getList,
-				getById: _getById
+				getById: _getById,
+				getNextPage: _getNextPage
 			};
 		}
 	])
@@ -130,4 +147,23 @@ angular.module('photo', ['ui.router'])
 
 	.controller('photoDetailCtrl', ['$scope', 'photo',
 		function ($scope, photo) { $scope.photo = photo; }
-	]);
+	])
+
+	.directive('photoScroll', ['photoService', function (photoService) {
+		return {
+			link: function (scope, elem) {
+				elem.bind('scroll', function () {
+					if (elem[0].offsetHeight + elem[0].scrollTop >= elem[0].scrollHeight) {
+						// photoService.getNextPage().then(function (list) {
+						// 	scope.list = list;
+						// });
+						scope.$apply(function () {
+							photoService.getNextPage().then(function (list) {
+								scope.list = list;
+							});
+						});
+					}
+				});
+			}
+		};
+	}]);
