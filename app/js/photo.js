@@ -11,7 +11,8 @@
 
 angular.module('photo', ['ui.router'])
 
-	.constant('mainURL', 'http://api.flickr.com/services/feeds/photos_public.gne')
+	.constant('mainURL', 'https://api.flickr.com/services/rest/')
+	.constant('key', '922c0cb04368500641ea0ca0b3cb2a27')
 
 	.config(['$locationProvider', '$stateProvider',
 
@@ -53,8 +54,8 @@ angular.module('photo', ['ui.router'])
 		}
 	])
 
-	.factory('photoService', ['$http', 'mainURL',
-		function ($http, url) {
+	.factory('photoService', ['$http', 'mainURL', 'key',
+		function ($http, url, key) {
 
 			// Modules which will get data from resource provided (now, dummy data)
 			// and define a manager to provide those data nicely.
@@ -62,12 +63,17 @@ angular.module('photo', ['ui.router'])
 			var _id = 0,
 				_list = [],
 				_params = {
+					method: 'flickr.photos.search',
+					api_key: key,
+					tags: 'cats',
 					page: 1,
-					lang: 'en-us',
-					tags: 'cat',
-					tagmode: 'all',
+					per_page: 10,
 					format: 'json',
-					jsoncallback: 'JSON_CALLBACK'
+					jsoncallback: 'JSON_CALLBACK',
+					sort: 'interestingness-desc',
+					privacy_filter: 1,
+					media: 'photos',
+					extras: 'description,date_upload,owner_name,views,original_format,tags,url_z'
 				},
 
 				_getList = function () {
@@ -78,7 +84,7 @@ angular.module('photo', ['ui.router'])
 						function (response) {
 							// Success: fill _list variable and return it.
 							// Before return it, parse all items to get the proper object to use in the controller.
-							_list = _parseData(response.data.items);
+							_list = _parseData(response.data.photos.photo);
 							return _list;
 						},
 						function () {
@@ -102,8 +108,7 @@ angular.module('photo', ['ui.router'])
 					_params.page += 1;
 					return $http({ url: url, params: _params, method: 'jsonp' }).then(
 						function (response) {
-							debugger;
-							_list = _.union(_list, _parseData(response.data.items));
+							_list = _.union(_list, _parseData(response.data.photos.photo));
 							return _list;
 						},
 						function () {
@@ -116,15 +121,17 @@ angular.module('photo', ['ui.router'])
 					_.each(photos, function (item) {
 						parsedData.push({
 							id: ++_id,
-							link: item.link,
+							photo_id: item.id,
+							link: 'http://flickr.com/photos/' + item.owner + '/' + item.id,
 							title: item.title,
-							imgsrc: item.media.m,
-							date: new Date(item.published),
-							description: item.description,
+							imgsrc: item.url_z,
+							date: new Date(parseInt(item.dateupload, 10)),
+							description: item.description._content,
 							tags: item.tags.split(' '),
 							author: {
-								id: item.author_id,
-								name: item.author
+								id: item.owner, // http://flick.com/photos/owner
+								name: item.ownername,  // owner_name
+								link: 'http://flickr.com/photos/' + item.owner
 							}
 						});
 					});

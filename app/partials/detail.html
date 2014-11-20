@@ -1,7 +1,7 @@
 <section class="photo--detail">
 
 	<header class="detail--header">
-		<a class="detail--link__external" href="{{photo.link}}" target="_blank">
+		<a class="detail--link__external" ng-href="{{photo.link}}" target="_blank">
 			<h2 class="detail--title photo--title">{{photo.title}}</h2>
 		</a>
 		<nav class="detail--menu">
@@ -10,7 +10,7 @@
 			</ul>
 		</nav>
 		<div class="detail--subheader">
-			<a class="detail--link__external"  href="{{photo.author.link}}" target="_blank">
+			<a class="detail--link__external"  ng-href="{{photo.author.link}}" target="_blank">
 				{{photo.author.name}}
 			</a>
 			<span class="detail--static">{{photo.date}}</span>
