@@ -1,0 +1,27 @@
+
+body {
+	width: 100%;
+}
+
+body .header {
+	width: 35%;
+	float: left;
+}
+
+body .container {
+	width: 65%;
+	float: left;
+
+	.photo {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 35%;
+		right: 0;
+		overflow: auto;
+	}
+}
+
+body footer {
+	clear: both;
+}

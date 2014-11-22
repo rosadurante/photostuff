@@ -1,0 +1,80 @@
+
+// Variables
+
+$font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+$font-size-default: 1.2em;
+$line-height-default: 1.2em;
+$font-weight-default: 400;
+
+$font-size-extra-large: 7vw;
+$font-size-large: 5vw;
+$font-size-medium: 2vw;
+$font-size-small: 1.2vw;
+$font-size-extra-small: 0.8vw;
+
+$line-height-extra-large: 8vw;
+$line-height-large: 6vw;
+$line-height-medium: 3vw;
+$line-height-small: 2vw;
+$line-height-extra-small: 1.5vw;
+
+$font-weight-normal: 400;
+$font-weight-bold: 800;
+$font-weight-light: 100;
+
+$white: white;
+$black: #333;
+
+$link-bg-default: blue;
+$link-bg-hover: green;
+$link-color-default: $white;
+$link-color-hover: $white;
+
+html, body {
+	font-family: $font-family;
+	font-size: $font-size-default;
+	font-weight: $font-weight-default;
+	line-height: $line-height-default;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: $font-weight-bold;
+}
+
+h1 {
+	font-size: $font-size-extra-large;
+	line-height: $line-height-extra-large;
+}
+h2, h3 {
+	font-size: $font-size-large;
+	line-height: $line-height-large;
+}
+h4, h5 {
+	font-size: $font-size-medium;
+	line-height: $line-height-medium;
+}
+
+a, p, span {
+	font-size: $font-size-medium;
+	line-height: $line-height-medium;
+}
+
+a {
+	text-decoration: none;
+	color: $link-color-default;
+	background-color: $link-bg-default;
+
+	&:hover {
+		color: $link-color-hover;
+		background-color: $link-bg-hover;
+	}
+}
+
+p { 
+	margin: 2px 10px;
+}
+
+span {
+	margin: 0 10px;
+}
