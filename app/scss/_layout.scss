@@ -1,4 +1,8 @@
 
+$header-height: 120px;
+$nav-height: 20px;
+$footer-height: 30px;
+
 body {
 
 	position: absolute;
@@ -6,33 +10,27 @@ body {
 	left: 0; right: 0;
 
 	.header {
-		width: $side-width;
-		height: 100%;
-		float: left;
-
+		height: $header-height;
+		max-height: $header-height;
 		@include box-sizing(border-box);
 	}
 
 	.container {
-		width: $container-width;
-		float: left;
-
 		@include box-sizing(border-box);
 
 		.photo {
 			position: absolute;
-			top: 0; bottom: 0;
-			left: $side-width; right: 0;
+			top: $header-height; bottom: $footer-height;
+			left: 0; right: 0;
 			overflow: auto;
 
 			@include box-sizing(border-box);
 		}
 	}
-
 	.footer {
+		height: $footer-height;
 		position: absolute;
-		left: 0;
 		bottom: 0;
-		width: $side-width;
+		width: 100%;
 	}
 }

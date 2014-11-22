@@ -1,19 +1,16 @@
 
 .header {
 	
-	background-color: $grey-lightest;
+	color: $white;
+	background-color: $black;
+	@include box-shadow(0 0 5px #000);
 
 	.header__title {
-		margin-top: $line-height-default;
 		padding: $line-height-default / 2 0;
 
-		font-size: $font-size-large;
+		font-size: $font-size-extra-large;
 		line-height: $line-height-extra-large;
 		font-weight: $font-weight-light;
 		text-align: center;
-
-		color: $white;
-		background-color: $black;
-		@include box-shadow(0 0 5px #000);
 	}
 }

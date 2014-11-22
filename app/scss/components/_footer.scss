@@ -1,6 +1,15 @@
 
-.footer .footer__copyright {
-	font-weight: $font-weight-light;
-	font-size: $font-size-small;
-	line-height: $line-height-small;
+.footer {
+
+	background-color: $black;
+
+	.footer__copyright {
+		margin-top: $line-height-default;
+		font-weight: $font-weight-light;
+		font-size: $font-size-extra-small;
+		line-height: $line-height-extra-small;
+		display: block;
+		text-align: right;
+		color: $white;
+	}
 }

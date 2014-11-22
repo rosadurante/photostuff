@@ -1,18 +1,28 @@
 
 .nav {
-	margin-top: $line-height-default / 2;
+	height: $nav-height;
+	max-height: $nav-height;
+
+	background-color: $white;
+
+	ul {
+		clear: both;
+		overflow: hidden;
+	}
 
 	.nav__item {
-		line-height: $line-height-small;
+		width: 33.33%;
+		float: left;
 
 		a {
-			padding: $line-height-default / 4;
+			height: $nav-height;
 			display: block;
 
 			background-color: transparent;
 			color: $black;
 
-			font-weight: $font-weight-bold;
+			font-weight: $font-weight-light;
+			text-align: center;
 
 			&:hover {
 				background-color: $black;
