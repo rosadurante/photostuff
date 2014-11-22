@@ -1,7 +1,5 @@
 
 .nav {
-	height: $nav-height;
-	max-height: $nav-height;
 
 	background-color: $white;
 
@@ -15,7 +13,6 @@
 		float: left;
 
 		a {
-			height: $nav-height;
 			display: block;
 
 			background-color: transparent;

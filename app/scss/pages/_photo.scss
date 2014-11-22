@@ -29,6 +29,11 @@ $detail-box-min-height: 85px;
 			background-color: rgba(255, 255, 255, 0.5);
 			padding: $line-height-default / 4;
 
+			@media all and (min-width: 800px) {
+				min-height: 0;
+				height: auto;
+			}
+
 			.item--title {
 				width: 100%;
 				white-space: nowrap;
@@ -40,8 +45,16 @@ $detail-box-min-height: 85px;
 
 			.item--date, .item--external {
 				margin: 0;
-				font-size: $font-size-small;
-				line-height: $line-height-small;
+			}
+
+			.item--date {
+				font-size: 2vh;
+				line-height: 2vh;
+
+				@media all and (min-width: 800px) {
+					font-size: $font-size-small;
+					line-height: $line-height-small;
+				}
 			}
 
 			.item--external {
@@ -51,6 +64,9 @@ $detail-box-min-height: 85px;
 				width: 10em;
 
 				text-align: center;
+				font-size: $font-size-small;
+				line-height: $line-height-small;
+
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -60,6 +76,11 @@ $detail-box-min-height: 85px;
 
 				&.item--flickr {
 					left: 10em + $line-height-default / 2;
+				}
+
+				@media all and (min-width: 800px) {
+					position: static;
+					width: auto;
 				}
 			}
 		}
