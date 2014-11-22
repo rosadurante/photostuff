@@ -26,21 +26,21 @@
   <!-- HEADER -->
   <header class="header">
     <h1 class="header__title">PhotoStuff</h1>
-    <nav class="header__menu">
+    <nav class="header__nav nav">
       <ul>
-        <li class="menu__item--list"><a ui-sref="photo.list">Photos</a></li>
-        <li class="menu__item--about"><a ui-sref="about">About</a></li>
-        <li class="menu__item--contact"><a ui-sref="contact">Contact</a></li>
+        <li class="nav__item nav__item--list"><a ui-sref="photo.list">Photos</a></li>
+        <li class="nav__item nav__item--about"><a ui-sref="about">About</a></li>
+        <li class="nav__item nav__item--contact"><a ui-sref="contact">Contact</a></li>
     </nav>
   </header>
 
   <!-- CONTAINER -->
-  <ui-view class="container">Empty content</ui-view>
+  <div ui-view class="container">Empty content</div>
 
 
   <!-- FOOTER -->
-  <footer>
-    <span class="copyright">&copy; 2014 Rosa Durante</span>
+  <footer class="footer">
+    <span class="footer__copyright">&copy; 2014 Rosa Durante</span>
   </footer>
 
   <!-- Scripts -->
