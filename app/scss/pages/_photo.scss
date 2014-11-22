@@ -68,6 +68,7 @@ $detail-box-min-height: 85px;
 				width: 10em;
 
 				text-align: center;
+				text-decoration: none;
 				font-size: $font-size-small;
 				line-height: $line-height-small;
 
@@ -77,6 +78,7 @@ $detail-box-min-height: 85px;
 			
 				padding: $line-height-default / 4;
 				background-color: $black;
+				color: $white;
 
 				&.item--flickr {
 					left: 10em + $line-height-default / 2;
@@ -104,14 +106,27 @@ $detail-box-min-height: 85px;
 		> .detail--link__external {
 			display: block;
 			margin-right: 3em;
+
+			text-decoration: none;
 		}
 
 		.detail--title {
 			background-color: $black;
+			color: $white;
 
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+		}
+
+		.detail--static {
+			font-size: 2vh;
+			line-height: 2vh;
+
+			@media all and (min-width: 800px) {
+				font-size: $font-size-small;
+				line-height: $line-height-small;
+			}
 		}
 
 		.detail--menu .menu--item__back {
