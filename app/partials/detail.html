@@ -21,8 +21,7 @@
 		<div class="detail--image">
 			<img ng-src="{{photo.imgsrc}}" alt="{{photo.title}}" />
 		</div>
-		<div class="detail--description">
-			{{photo.description}}
+		<div class="detail--description" ng-bind-html="photo.description | rawHTML">
 		</div>
 	</div>
 
