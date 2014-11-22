@@ -13,15 +13,23 @@ $font-size-medium: 2vw;
 $font-size-small: 1.2vw;
 $font-size-extra-small: 0.8vw;
 
-$line-height-extra-large: 8vw;
-$line-height-large: 6vw;
-$line-height-medium: 3vw;
+$line-height-extra-large: 6vw;
+$line-height-large: 3.8vw;
+$line-height-medium: 2.7vw;
 $line-height-small: 2vw;
 $line-height-extra-small: 1.5vw;
 
 $font-weight-normal: 400;
 $font-weight-bold: 800;
 $font-weight-light: 100;
+
+// Layout variables
+
+$body-width: 100%;
+$side-width: 30%;
+$container-width: 70%;
+
+// Colors
 
 $white: white;
 $black: #333;
@@ -30,6 +38,11 @@ $link-bg-default: blue;
 $link-bg-hover: green;
 $link-color-default: $white;
 $link-color-hover: $white;
+
+$grey: #aaa;
+$grey-dark: #888;
+$grey-soft: #ddd;
+$grey-lightest: #ecebef;
 
 html, body {
 	font-family: $font-family;

@@ -1,27 +1,38 @@
 
 body {
-	width: 100%;
-}
 
-body .header {
-	width: 35%;
-	float: left;
-}
+	position: absolute;
+	top: 0; bottom: 0;
+	left: 0; right: 0;
 
-body .container {
-	width: 65%;
-	float: left;
+	.header {
+		width: $side-width;
+		height: 100%;
+		float: left;
 
-	.photo {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 35%;
-		right: 0;
-		overflow: auto;
+		@include box-sizing(border-box);
 	}
-}
 
-body footer {
-	clear: both;
+	.container {
+		width: $container-width;
+		float: left;
+
+		@include box-sizing(border-box);
+
+		.photo {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: $side-width; right: 0;
+			overflow: auto;
+
+			@include box-sizing(border-box);
+		}
+	}
+
+	.footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: $side-width;
+	}
 }

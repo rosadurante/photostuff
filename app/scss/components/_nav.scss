@@ -1,0 +1,23 @@
+
+.nav {
+	margin-top: $line-height-default / 2;
+
+	.nav__item {
+		line-height: $line-height-small;
+
+		a {
+			padding: $line-height-default / 4;
+			display: block;
+
+			background-color: transparent;
+			color: $black;
+
+			font-weight: $font-weight-bold;
+
+			&:hover {
+				background-color: $black;
+				color: $white;
+			}
+		}
+	}
+}
