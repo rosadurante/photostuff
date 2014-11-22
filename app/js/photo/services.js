@@ -79,7 +79,7 @@ angular.module('photo')
 						link: 'http://flickr.com/photos/' + item.owner + '/' + item.id,
 						title: item.title,
 						imgsrc: item.url_z,
-						date: new Date(parseInt(item.dateupload, 10)),
+						date: new Date(parseInt(item.dateupload, 10) * 1000),
 						description: item.description._content,
 						tags: item.tags.split(' '),
 						author: {
