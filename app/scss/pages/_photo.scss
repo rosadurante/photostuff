@@ -1,0 +1,67 @@
+
+// Variables
+
+$detail-box-min-height: 85px;
+
+.photo--list, .photo--detail {
+	max-width: $container-max-width;
+	margin: 0 auto;
+}
+
+.photo--list {
+
+	.photo--item {
+		position: relative;
+
+		.item--image img {
+			display: block;
+			width: 100%;
+			cursor: pointer;
+		}
+
+		.item--detail {
+			min-height: $detail-box-min-height;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			background-color: rgba(255, 255, 255, 0.5);
+			padding: $line-height-default / 4;
+
+			.item--title {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+
+				cursor: pointer;
+			}
+
+			.item--date, .item--external {
+				margin: 0;
+				font-size: $font-size-small;
+				line-height: $line-height-small;
+			}
+
+			.item--external {
+				position: absolute;
+				bottom: $line-height-default / 4;
+				left: $line-height-default / 4;
+				width: 10em;
+
+				text-align: center;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			
+				padding: $line-height-default / 4;
+				background-color: $black;
+
+				&.item--flickr {
+					left: 10em + $line-height-default / 2;
+				}
+			}
+		}
+	}
+}
