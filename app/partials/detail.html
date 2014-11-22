@@ -13,7 +13,7 @@
 			<a class="detail--link__external"  ng-href="{{photo.author.link}}" target="_blank">
 				{{photo.author.name}}
 			</a>
-			<span class="detail--static">{{photo.date}}</span>
+			<span class="detail--static">Published: {{photo.date | date : 'mediumDate' }} at {{ photo.date | date : 'shortTime'}}</span>
 		</div>
 	</header>
 
