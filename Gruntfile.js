@@ -39,10 +39,11 @@ module.exports = function (grunt) {
 
 		sass: {
 			prod: {
-				options: { style: 'compressed' },
+				options: { style: 'compressed', compass: true },
 				files: { 'app/css/styles.css': 'app/scss/styles.scss' }
 			},
 			dev: {
+				options: { compass: true },
 				files: { 'app/css/styles.css': 'app/scss/styles.scss' }
 			}
 		},
