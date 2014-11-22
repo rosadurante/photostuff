@@ -4,8 +4,12 @@
 $detail-box-min-height: 85px;
 
 .photo--list, .photo--detail {
-	max-width: $container-max-width;
-	margin: 0 auto;
+	position: absolute;
+	top: $header-height; bottom: $footer-height;
+	left: 0; right: 0;
+	overflow: auto;
+
+	@include box-sizing(border-box);
 }
 
 .photo--list {
@@ -85,4 +89,88 @@ $detail-box-min-height: 85px;
 			}
 		}
 	}
+}
+
+.photo--detail {
+
+	.detail--header {
+		border-bottom: 5px solid $black;
+
+		margin: $line-height-default;
+		padding-bottom: $line-height-default / 2;
+
+		position: relative;
+
+		> .detail--link__external {
+			display: block;
+			margin-right: 3em;
+		}
+
+		.detail--title {
+			background-color: $black;
+
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.detail--menu .menu--item__back {
+			position: absolute;
+			width: 3em;
+			height: $line-height-large;
+			top: 0;
+			right: 0;
+			color: $white;
+			background-color: $black;
+			text-align: center;
+		}
+	}
+
+	.detail--content {
+		overflow: hidden;
+		clear: both;
+
+		@media all and (min-width: 800px) {
+			margin: $line-height-default;
+		}
+
+		.detail--image {
+			width: auto;
+			float: none;
+
+			img { width: 100%; }
+
+			@media all and (min-width: 800px) {
+				width: 35%;
+				float: left;
+			}
+		}
+
+		.detail--description {
+			margin: $line-height-default;
+			width: auto;
+			float: none;
+
+			@media all and (min-width: 800px) {
+				margin: 0;
+				margin-left: 4%;
+				width: 61%;
+				float: left;
+			}
+		}
+	}
+
+	.detail--footer {
+		margin: $line-height-default;
+		width: auto;
+		clear: both;
+		overflow: hidden;
+
+		.detail--tags .tag--name {
+			display: block;
+			margin: 0 $line-height-default / 4;
+			float: left;
+		}
+	}
+
 }
