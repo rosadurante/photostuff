@@ -53,7 +53,7 @@ module.exports = function (grunt) {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc',
-				ignores: ['app/js/libs/**/*.js']
+				ignores: ['app/js/libs/**/*.js', 'app/js/build/*.js']
 			},
 			all: ['gruntfile.js', 'app/js/**/*.js']
 		},
@@ -88,6 +88,45 @@ module.exports = function (grunt) {
 					middleware: rewriteUrlIndex
 				}
 			}
+		},
+
+		// ---------- grunt-contrib-concat ----------
+
+		concat: {
+			options: {
+				separator: ';'
+			},
+			lib: {
+				src: [ 'app/js/libs/angular.min.js',
+					'app/js/libs/angular-ui-router.min.js',
+					'app/js/libs/angular-mocks.js',
+					'app/js/libs/underscore-min.js'
+				],
+				dest: 'app/js/build/libs.js'
+			},
+			app: {
+				src: [ 'app/js/app.js',
+					'app/js/photo/main.js',
+					'app/js/photo/filter.js',
+					'app/js/photo/directives.js',
+					'app/js/photo/services.js',
+					'app/js/photo/controllers.js'
+				],
+				dest: 'app/js/build/app.js'
+			}
+		},
+
+		// ---------- grunt-contrib-uglify ----------
+
+		uglify: {
+			prod: {
+				files: {
+					'app/js/build/app.js': [ 'app/js/build/app.js' ]
+				},
+				options: {
+					mangle: false
+				}
+			}
 		}
 
 	});
@@ -101,7 +140,11 @@ module.exports = function (grunt) {
 	]);
 
 	grunt.registerTask('dev', 'Compile and open', [
-		'sass:dev', 'jshint', 'connect:dev'
+		'sass:dev', 'jshint', 'concat:lib', 'concat:app', 'connect:dev'
+	]);
+
+	grunt.registerTask('prod', 'Production', [
+		'sass:prod', 'concat:lib', 'concat:app', 'uglify:prod', 'connect:server'
 	]);
 
 };
