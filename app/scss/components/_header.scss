@@ -1,9 +1,6 @@
 
 .header {
-	
 	color: $primary-color;
-	border-bottom: $line-height-default/2 solid $primary-color;
-
 	background-color: $black;
 
 	@media all and (min-width: 800px) {
