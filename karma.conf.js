@@ -18,10 +18,15 @@ module.exports = function (config) {
 
 		// list of files / patterns to load in the browser
 		files: [
+			'./app/js/libs/underscore-min.js',
 			'./app/js/libs/angular.min.js',
 			'./app/js/libs/angular-ui-router.min.js',
 			'./app/js/libs/angular-mocks.js',
-			'./app/js/photo.js',
+			'./app/js/photo/main.js',
+			'./app/js/photo/filter.js',
+			'./app/js/photo/services.js',
+			'./app/js/photo/directives.js',
+			'./app/js/photo/controllers.js',
 			'./app/js/app.js',
 			'./app/js/test/*Spec.js'
 		],
