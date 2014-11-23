@@ -1,7 +1,7 @@
 /* globals angular */
 
 /**
- * photo.js
+ * filter.js
  *
  * Author: Rosa Durante <me@rosadurante.com>
  * Date: Sat 15th Nov 2014

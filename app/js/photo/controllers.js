@@ -1,7 +1,7 @@
 /* globals angular*/
 
 /**
- * photo.js
+ * controllers.js
  *
  * Author: Rosa Durante <me@rosadurante.com>
  * Date: Sat 15th Nov 2014
