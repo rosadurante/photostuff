@@ -12,7 +12,9 @@ $detail-box-min-height: 3.8em;
 	@include box-sizing(border-box);
 }
 
-.photo--list {
+.photo--list  ul {
+	max-width: $container-max-width;
+	margin: 0 auto;
 
 	.photo--item {
 		position: relative;
@@ -122,6 +124,7 @@ $detail-box-min-height: 3.8em;
 }
 
 .photo--detail {
+	background-color: $secondary-color;
 
 	.detail--header {
 		margin: $line-height-default;

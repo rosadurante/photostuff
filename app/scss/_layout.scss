@@ -20,11 +20,6 @@ body {
 
 	.container {
 		@include box-sizing(border-box);
-
-		.photo--list {
-			max-width: $container-max-width;
-			margin: 0 auto;
-		}
 	}
 	.footer {
 		height: $footer-height;
