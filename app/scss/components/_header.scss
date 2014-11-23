@@ -1,9 +1,9 @@
 
 .header {
 	
-	color: $white;
-	background-color: $black;
-	@include box-shadow(0 0 5px #000);
+	color: $primary-color;
+	// background-color: $white;
+	// @include box-shadow(0 0 10px $secondary-color);
 
 	.header__title {
 		padding: $line-height-default / 2 0;

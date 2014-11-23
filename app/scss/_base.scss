@@ -45,11 +45,24 @@ $grey-dark: #888;
 $grey-soft: #ddd;
 $grey-lightest: #ecebef;
 
+$background-color-site: #dddad6;
+
+$primary-color: #5e9ca0;  // turquoise
+// $primary-color: #97282c; // red (blood)
+// $primary-color: #ae9c96;
+// $secondary-color: #342800;
+// $secondary-color: #2b2301; // brown
+// $secondary-color: #b08b0d; // yellow
+$secondary-color: #ae9c96;
+
+
 html, body {
 	font-family: $font-family;
 	font-size: $font-size-default;
 	font-weight: $font-weight-default;
 	line-height: $line-height-default;
+
+	background-color: $background-color-site;
 }
 
 h1, h2, h3, h4, h5 {

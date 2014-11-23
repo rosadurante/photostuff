@@ -31,6 +31,7 @@ $detail-box-min-height: 85px;
 			right: 0;
 
 			background-color: rgba(255, 255, 255, 0.5);
+			background-color: transparentize($primary-color, 0.4);
 			padding: $line-height-default / 4;
 
 			@media all and (min-width: 800px) {
