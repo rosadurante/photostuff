@@ -3,14 +3,31 @@
 
 	background-color: $primary-color;
 
+	@media all and (min-width: 800px) {
+		background-color: transparent;
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		margin: 4.3em $line-height-default/2 0;
+	}
+
 	ul {
 		clear: both;
 		overflow: hidden;
 	}
 
 	.nav__item {
+
 		width: 33.33%;
 		float: left;
+
+		@media all and (min-width: 800px) {
+			width: auto;
+			float: none;
+
+			display: inline-block;
+		}
 
 		a {
 			display: block;
@@ -21,14 +38,30 @@
 			color: $white;
 
 			font-weight: $font-weight-light;
+			font-size: 1em;
 			text-align: center;
 			text-decoration: none;
 
 			@include transition(all 0.2s ease-in);
 
 			&:hover {
-				background-color: $white;
+				background-color: $background-color-site;
 				color: $primary-color;
+			}
+
+			@media all and (min-width: 800px) {
+				display: block;
+				padding: $line-height-default / 4 $line-height-default;
+
+				color: $primary-color;
+				@include border-top-left-radius($line-height-default / 2);
+				@include border-top-right-radius($line-height-default / 2);
+
+				&:hover {
+					background-color: transparent;
+					color: $white;
+				}
+
 			}
 		}
 	}

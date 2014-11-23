@@ -1,7 +1,7 @@
 
 // Variables
 
-$detail-box-min-height: 85px;
+$detail-box-min-height: 3.8em;
 
 .photo--list, .photo--detail {
 	position: absolute;
@@ -30,8 +30,7 @@ $detail-box-min-height: 85px;
 			left: 0;
 			right: 0;
 
-			background-color: rgba(255, 255, 255, 0.5);
-			background-color: transparentize($primary-color, 0.4);
+			background-color: transparentize($secondary-color, 0.4);
 			padding: $line-height-default / 4;
 
 			@media all and (min-width: 800px) {
@@ -46,6 +45,17 @@ $detail-box-min-height: 85px;
 				text-overflow: ellipsis;
 
 				cursor: pointer;
+				color: $black;
+				background-color: transparent;
+
+				font-size: $font-size-medium;
+
+				@include transition(all 0.2s ease-in);
+
+				&:hover {
+					color: $primary-color;
+					background-color: $secondary-color;
+				}
 			}
 
 			.item--date, .item--external {
@@ -53,13 +63,7 @@ $detail-box-min-height: 85px;
 			}
 
 			.item--date {
-				font-size: 2vh;
-				line-height: 2vh;
-
-				@media all and (min-width: 800px) {
-					font-size: $font-size-small;
-					line-height: $line-height-small;
-				}
+				font-size: $font-size-extra-small;
 			}
 
 			.item--external {
@@ -70,8 +74,7 @@ $detail-box-min-height: 85px;
 
 				text-align: center;
 				text-decoration: none;
-				font-size: $font-size-small;
-				line-height: $line-height-small;
+				font-size: $font-size-extra-small;
 
 				white-space: nowrap;
 				overflow: hidden;
@@ -91,14 +94,36 @@ $detail-box-min-height: 85px;
 				}
 			}
 		}
+
+		&:hover {
+			.item--image {
+				@include box-shadow(inset 0 0 $line-height-default/2 $black-darker);
+			}
+
+			.item--detail {
+				background-color: $secondary-color;
+
+
+				.item--title {
+					color: $primary-color;
+				}
+				.item--external {
+					background-color: $primary-color;
+
+					@include transition (all 0.2s ease-in);
+
+					&:hover {
+						background-color: transparentize($primary-color, 0.5);
+					}
+				}
+			}
+		}
 	}
 }
 
 .photo--detail {
 
 	.detail--header {
-		border-bottom: 5px solid $black;
-
 		margin: $line-height-default;
 		padding-bottom: $line-height-default / 2;
 
@@ -112,33 +137,62 @@ $detail-box-min-height: 85px;
 		}
 
 		.detail--title {
-			background-color: $black;
-			color: $white;
+			background-color: transparent;
+			color: $primary-color;
 
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+
+			font-size: $font-size-medium;
+			@include transition (all 0.2s ease-in);
+
+			&:hover {
+				color: $black;
+			}
+
+			@media all and (min-width: 800px) {
+				font-size: $font-size-large;
+			}
 		}
 
 		.detail--static {
-			font-size: 2vh;
-			line-height: 2vh;
+			font-size: $font-size-extra-small;
 
 			@media all and (min-width: 800px) {
 				font-size: $font-size-small;
-				line-height: $line-height-small;
 			}
 		}
 
 		.detail--menu .menu--item__back {
 			position: absolute;
 			width: 3em;
-			height: $line-height-large;
 			top: 0;
 			right: 0;
-			color: $white;
-			background-color: $black;
+			color: $secondary-color;
+			background-color: $primary-color;
 			text-align: center;
+
+			margin-top: $line-height-default / 4;
+
+			@include transition(all 0.2s ease-in);
+
+			&:hover {
+				background-color: $black;
+			}
+		}
+
+		.detail--subheader .detail--link__external {
+			font-size: $font-size-small;
+			color: $primary-color;
+			margin-right: $line-height-default / 4;
+
+			@include transition(all 0.2s ease-in);
+
+			&:hover {
+				color: $black;
+			}
+
 		}
 	}
 
@@ -163,9 +217,21 @@ $detail-box-min-height: 85px;
 		}
 
 		.detail--description {
-			margin: $line-height-default;
+			padding: $line-height-default;
 			width: auto;
 			float: none;
+
+			font-size: $font-size-small;
+			background-color: transparentize($black, 0.800px);
+
+			@include box-sizing(border-box);
+
+			a {
+				color: $black;
+				&:hover {
+					color: $primary-color;
+				}
+			}
 
 			@media all and (min-width: 800px) {
 				margin: 0;
@@ -182,10 +248,20 @@ $detail-box-min-height: 85px;
 		clear: both;
 		overflow: hidden;
 
+		font-size: $font-size-small;
+
+		.detail--tags .tag--title {
+			margin-left: 0; margin-right: 0;
+		}
+
 		.detail--tags .tag--name {
 			display: block;
 			margin: 0 $line-height-default / 4;
 			float: left;
+
+			&:hover {
+				color: $primary-color;
+			}
 		}
 	}
 

@@ -4,10 +4,9 @@
 	background-color: $secondary-color;
 
 	.footer__copyright {
-		margin-top: $line-height-default;
+		margin: $line-height-default;
 		font-weight: $font-weight-light;
 		font-size: $font-size-extra-small;
-		line-height: $line-height-extra-small;
 		display: block;
 		text-align: right;
 		color: $black;
