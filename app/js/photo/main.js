@@ -28,7 +28,7 @@ angular.module('photo', ['ui.router'])
 			$stateProvider
 				.state('photo', {
 					abstract: true,
-					url: '/photo',
+					url: '/',
 					templateUrl: '/partials/photo.html'
 				})
 				.state('photo.list', {
@@ -42,7 +42,7 @@ angular.module('photo', ['ui.router'])
 					controller: 'photoListCtrl'
 				})
 				.state('photo.detail', {
-					url: '/:photoId',
+					url: ':photoId',
 					templateUrl: '/partials/detail.html',
 					resolve: {
 						photo: ['$stateParams', 'photoService', function ($stateParams, photoService) {
