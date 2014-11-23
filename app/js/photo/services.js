@@ -34,6 +34,7 @@ angular.module('photo')
 
 			__successList = function (response) {
 				_list = __parseData(response.data.photos.photo);
+				_params.per_page = 10;
 				return _list;
 			},
 
@@ -46,9 +47,11 @@ angular.module('photo')
 				console.log('Error fetching data: ', _params);
 			},
 
-			_getList = function () {
+			_getList = function (id) {
 				_id = 0;
 				_params.page = 1;
+
+				_params.per_page = id > _params.per_page ? id : _params.per_page;
 
 				return $http({ url: url, params: _params, method: 'jsonp' }).then(
 					__successList, __error);
@@ -66,7 +69,7 @@ angular.module('photo')
 					return _.find(_list, function (photo) { return photo.id.toString() === id; });
 				};
 
-				return !_list.length ? _getList().then(_find) : _find();
+				return !_list.length ? _getList(id).then(_find) : _find();
 			},
 
 			__parseData = function (photos) {
