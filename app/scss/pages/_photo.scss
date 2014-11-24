@@ -263,6 +263,7 @@ $detail-box-min-height: 3.8em;
 			display: block;
 			margin: 0 $line-height-default / 4;
 			float: left;
+			cursor: pointer;
 
 			&:hover {
 				color: $primary-color;

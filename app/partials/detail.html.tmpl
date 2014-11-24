@@ -23,12 +23,15 @@
 		<div class="detail--image">
 			<img ng-src="{{photo.imgsrc}}" alt="{{photo.title}}" />
 		</div>
-		<div class="detail--description" ng-bind-html="photo.description | rawHTML">
+		<div ng-show="photo.description" class="detail--description" ng-bind-html="photo.description | rawHTML">
+		</div>
+		<div ng-hide="photo.description" class="detail--description">
+			No description provided
 		</div>
 	</div>
 
 	<footer class="detail--footer">
-		<div class="detail--tags">
+		<div ng-if="photo.tags.length" class="detail--tags">
 			<p class="tag--title">Tags:</p>
 			<span ng-repeat="tag in photo.tags" class="tag--name" ui-sref="photo.list({photoTag: tag})">{{tag}}</span>
 		</div>

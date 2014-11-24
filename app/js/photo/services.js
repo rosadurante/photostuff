@@ -74,6 +74,8 @@ angular.module('photo')
 			},
 
 			_getById = function (id) {
+				_params.id = id;
+
 				var _find = function () {
 					return _.find(_list, function (photo) { return photo.id.toString() === id; });
 				};
@@ -86,7 +88,7 @@ angular.module('photo')
 				
 				_.each(photos, function (item) {
 					parsedData.push({
-						id: ++_id,
+						id: item.id,
 						photo_id: item.id,
 						link: 'http://flickr.com/photos/' + item.owner + '/' + item.id,
 						title: item.title,
