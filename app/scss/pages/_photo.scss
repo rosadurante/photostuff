@@ -5,7 +5,8 @@ $detail-box-min-height: 3.8em;
 
 .photo--list, .photo--detail {
 	position: absolute;
-	top: $header-height; bottom: $footer-height;
+	top: $header-height;
+	bottom: $footer-height;
 	left: 0; right: 0;
 	overflow: auto;
 
@@ -35,7 +36,7 @@ $detail-box-min-height: 3.8em;
 			background-color: transparentize($secondary-color, 0.4);
 			padding: $line-height-default / 4;
 
-			@media all and (min-width: 800px) {
+			@media all and (min-width: $media-desktop) {
 				min-height: 0;
 				height: auto;
 			}
@@ -90,7 +91,7 @@ $detail-box-min-height: 3.8em;
 					left: 10em + $line-height-default / 2;
 				}
 
-				@media all and (min-width: 800px) {
+				@media all and (min-width: $media-desktop) {
 					position: static;
 					width: auto;
 				}
@@ -105,13 +106,12 @@ $detail-box-min-height: 3.8em;
 			.item--detail {
 				background-color: $secondary-color;
 
-
 				.item--title {
 					color: $primary-color;
 				}
+
 				.item--external {
 					background-color: $primary-color;
-
 					@include transition (all 0.2s ease-in);
 
 					&:hover {
@@ -154,15 +154,18 @@ $detail-box-min-height: 3.8em;
 				color: $black;
 			}
 
-			@media all and (min-width: 800px) {
+			@media all and (min-width: $media-desktop) {
 				font-size: $font-size-large;
 			}
 		}
 
-		.detail--static {
+		.detail--static,
+		.detail--menu .menu--item__back,
+		.detail--subheader .detail--link__external {
 			font-size: $font-size-extra-small;
+			@include transition(all 0.2s ease-in);
 
-			@media all and (min-width: 800px) {
+			@media all and (min-width: $media-desktop) {
 				font-size: $font-size-small;
 			}
 		}
@@ -178,24 +181,18 @@ $detail-box-min-height: 3.8em;
 
 			margin-top: $line-height-default / 4;
 
-			@include transition(all 0.2s ease-in);
-
 			&:hover {
 				background-color: $black;
 			}
 		}
 
 		.detail--subheader .detail--link__external {
-			font-size: $font-size-small;
 			color: $primary-color;
 			margin-right: $line-height-default / 4;
-
-			@include transition(all 0.2s ease-in);
 
 			&:hover {
 				color: $black;
 			}
-
 		}
 	}
 
@@ -203,7 +200,7 @@ $detail-box-min-height: 3.8em;
 		overflow: hidden;
 		clear: both;
 
-		@media all and (min-width: 800px) {
+		@media all and (min-width: $media-desktop) {
 			margin: $line-height-default;
 		}
 
@@ -213,7 +210,7 @@ $detail-box-min-height: 3.8em;
 
 			img { width: 100%; }
 
-			@media all and (min-width: 800px) {
+			@media all and (min-width: $media-desktop) {
 				width: 35%;
 				float: left;
 			}
@@ -224,7 +221,7 @@ $detail-box-min-height: 3.8em;
 			width: auto;
 			float: none;
 
-			font-size: $font-size-small;
+			font-size: $font-size-extra-small;
 			background-color: transparentize($black, 0.800px);
 
 			@include box-sizing(border-box);
@@ -236,11 +233,13 @@ $detail-box-min-height: 3.8em;
 				}
 			}
 
-			@media all and (min-width: 800px) {
+			@media all and (min-width: $media-desktop) {
 				margin: 0;
 				margin-left: 4%;
 				width: 61%;
 				float: left;
+
+				font-size: $font-size-small;
 			}
 		}
 	}
@@ -251,7 +250,7 @@ $detail-box-min-height: 3.8em;
 		clear: both;
 		overflow: hidden;
 
-		font-size: $font-size-small;
+		font-size: $font-size-extra-small;
 
 		.detail--tags .tag--title {
 			margin-left: 0; margin-right: 0;
@@ -265,6 +264,10 @@ $detail-box-min-height: 3.8em;
 			&:hover {
 				color: $primary-color;
 			}
+		}
+
+		@media all and (min-width: $media-desktop) {
+			font-size: $font-size-small;
 		}
 	}
 

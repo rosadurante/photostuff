@@ -2,9 +2,9 @@
 .header {
 	color: $primary-color;
 	background-color: $black;
+	@include box-shadow(inset 0 0 $line-height-default/4 $black-darker);
 
-	@media all and (min-width: 800px) {
-		@include box-shadow(inset 0 0 $line-height-default/4 $black-darker);
+	@media all and (min-width: $media-desktop) {
 		position: relative;
 	}
 
@@ -18,13 +18,10 @@
 
 		cursor: pointer;
 
-		@include box-shadow(inset 0 0 $line-height-default/4 $black-darker);
 		@include transition(all 0.2s ease-in);
 
-		@media all and (min-width: 800px) {
-			@include box-shadow(none);
+		@media all and (min-width: $media-desktop) {
 			font-size: $font-size-extra-large;
-			display: inline-block;
 		}
 	}
 }
