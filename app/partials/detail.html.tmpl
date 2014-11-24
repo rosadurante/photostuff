@@ -1,9 +1,11 @@
 <section class="photo--detail">
 
 	<header class="detail--header">
-		<a class="detail--link__external" ng-href="{{photo.link}}" target="_blank">
-			<h2 class="detail--title photo--title">{{photo.title}}</h2>
-		</a>
+		<h2 class="detail--title photo--title">
+			<a class="detail--link__external" ng-href="{{photo.link}}" target="_blank">
+				{{photo.title}}
+			</a>
+		</h2>
 		<nav class="detail--menu">
 			<ul>
 				<li class="menu--item__back" ui-sref="photo.list">Back</li>
@@ -28,7 +30,7 @@
 	<footer class="detail--footer">
 		<div class="detail--tags">
 			<p class="tag--title">Tags:</p>
-			<span ng-repeat="tag in photo.tags" class="tag--name">{{tag}}</span>
+			<span ng-repeat="tag in photo.tags" class="tag--name" ui-sref="photo.list({photoTag: tag})">{{tag}}</span>
 		</div>
 	</footer>
 
