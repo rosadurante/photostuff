@@ -2,3 +2,4 @@ node_modules
 .sass-cache
 app/css
 app/js/build
+validate-report.json
