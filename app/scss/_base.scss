@@ -52,6 +52,8 @@ html, body {
 	font-size: $font-size-default;
 	font-weight: $font-weight-default;
 	line-height: $line-height-default;
+
+	overflow: hidden;
 }
 
 h1, h2, h3, h4, h5 {
