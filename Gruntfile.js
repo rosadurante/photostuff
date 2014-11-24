@@ -127,12 +127,31 @@ module.exports = function (grunt) {
 					mangle: false
 				}
 			}
+		},
+
+
+		htmlangular: {
+			options: {
+				tmplext: 'html.tmpl',
+				doctype: 'HTML5',
+				charset: 'utf-8',
+				customattrs: [
+					'photo-scroll'
+				],
+				relaxerror: [
+					'Element img is missing required attribute src.' // Using ng-src instead
+				],
+				reportpath: 'validate-report.json'
+			},
+			files: {
+				src: ['app/index.html', 'app/partials/*.html.tmpl']
+			},
 		}
 
 	});
 
 	grunt.registerTask('test', 'Running tests', [
-		'jshint', 'karma'
+		'jshint', 'htmlangular', 'karma'
 	]);
 
 	grunt.registerTask('watch', 'Watching styles', [

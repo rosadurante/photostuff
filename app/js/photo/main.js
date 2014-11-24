@@ -29,11 +29,11 @@ angular.module('photo', ['ui.router'])
 				.state('photo', {
 					abstract: true,
 					url: '/',
-					templateUrl: '/partials/photo.html'
+					templateUrl: '/partials/photo.html.tmpl'
 				})
 				.state('photo.list', {
 					url: '',
-					templateUrl: '/partials/list.html',
+					templateUrl: '/partials/list.html.tmpl',
 					resolve: {
 						list: ['photoService', function (photoService) {
 							return photoService.getList();
@@ -43,7 +43,7 @@ angular.module('photo', ['ui.router'])
 				})
 				.state('photo.detail', {
 					url: ':photoId',
-					templateUrl: '/partials/detail.html',
+					templateUrl: '/partials/detail.html.tmpl',
 					resolve: {
 						photo: ['$stateParams', 'photoService', function ($stateParams, photoService) {
 							return photoService.getById($stateParams.photoId);
