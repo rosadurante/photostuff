@@ -32,11 +32,11 @@ angular.module('photo', ['ui.router'])
 					templateUrl: '/partials/photo.html.tmpl'
 				})
 				.state('photo.list', {
-					url: '',
+					url: '?:photoTag&:photoText',
 					templateUrl: '/partials/list.html.tmpl',
 					resolve: {
-						list: ['photoService', function (photoService) {
-							return photoService.getList();
+						list: ['$stateParams', 'photoService', function ($stateParams, photoService) {
+							return photoService.getList({ tags: $stateParams.photoTag, text: $stateParams.photoText });
 						}]
 					},
 					controller: 'photoListCtrl'

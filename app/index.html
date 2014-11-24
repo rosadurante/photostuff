@@ -26,6 +26,9 @@
   <!-- HEADER -->
   <header class="header">
     <h1 ui-sref="photo.list" class="header__title">PhotoStuff</h1>
+    <div class="header__search-box" ng-controller="searchPhotoCtrl">
+      <input type="text" placeholder="Search photos..." ng-model="query" ng-change="submitSearch()" />
+    </div>
   </header>
 
   <!-- CONTAINER -->

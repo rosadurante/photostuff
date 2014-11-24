@@ -22,6 +22,7 @@ angular.module('photo')
 				method: 'flickr.photos.search',
 				api_key: key,
 				tags: 'cats',
+				text: '',
 				page: 1,
 				per_page: 10,
 				format: 'json',
@@ -47,11 +48,19 @@ angular.module('photo')
 				console.log('Error fetching data: ', _params);
 			},
 
-			_getList = function (id) {
+			_getList = function (options) {
 				_id = 0;
 				_params.page = 1;
 
-				_params.per_page = id > _params.per_page ? id : _params.per_page;
+				_params.per_page = options.id > _params.per_page ? options.id : _params.per_page;
+
+				if (options.tags) {
+					_params.tags = options.tags;
+					_params.text = '';
+				} else if (options.text) {
+					_params.text = options.text;
+					_params.tags = '';
+				}
 
 				return $http({ url: url, params: _params, method: 'jsonp' }).then(
 					__successList, __error);
@@ -69,7 +78,7 @@ angular.module('photo')
 					return _.find(_list, function (photo) { return photo.id.toString() === id; });
 				};
 
-				return !_list.length ? _getList(id).then(_find) : _find();
+				return !_list.length ? _getList({id: id}).then(_find) : _find();
 			},
 
 			__parseData = function (photos) {

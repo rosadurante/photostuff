@@ -21,4 +21,10 @@ angular.module('photostuff', ['ui.router', 'photo'])
 			$urlRouterProvider.otherwise('/');
 		}
 
-	]);
+	])
+
+	.controller('searchPhotoCtrl', ['$scope', '$state', function ($scope, $state) {
+		$scope.submitSearch = function () {
+			$state.go('photo.list', {photoText: $scope.query, photoTag: undefined});
+		};
+	}]);
