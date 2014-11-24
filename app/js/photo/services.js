@@ -36,6 +36,7 @@ angular.module('photo')
 			__successList = function (response) {
 				_list = __parseData(response.data.photos.photo);
 				_params.per_page = 10;
+				delete _params.id;
 				return _list;
 			},
 
@@ -52,7 +53,7 @@ angular.module('photo')
 				_id = 0;
 				_params.page = 1;
 
-				_params.per_page = options.id > _params.per_page ? options.id : _params.per_page;
+				if (options.id) { _params.id = options.id; }
 
 				if (options.tags) {
 					_params.tags = options.tags;
@@ -77,6 +78,7 @@ angular.module('photo')
 				_params.id = id;
 
 				var _find = function () {
+					delete _params.id;
 					return _.find(_list, function (photo) { return photo.id.toString() === id; });
 				};
 

@@ -52,7 +52,8 @@ describe('photo.services', function () {
 				'&per_page=10' +
 				'&privacy_filter=1' +
 				'&sort=interestingness-desc' +
-				'&tags=cats';
+				'&tags=cats' +
+				'&text=';
 		}
 	));
 
@@ -74,10 +75,10 @@ describe('photo.services', function () {
 	it('should return a parsed list of photos', function () {
 		http.expectJSONP(url).respond(200, list);
 
-		service.getList().then(function (response) {
+		service.getList({}).then(function (response) {
 
 			expect(response.length).toBe(list.photos.photo.length);
-			expect(response[0].id).toBe(1);
+			expect(response[0].id).toBe('0001');
 			expect(response[0].photo_id).toBe('0001');
 			expect(response[0].link).toBe('http://flickr.com/photos/0123@01/0001');
 			expect(response[0].title).toBe('title picture 1');
@@ -95,12 +96,12 @@ describe('photo.services', function () {
 	});
 
 	it('should return photo details given an id', function () {
-
+		url = url.replace('format=json&', 'format=json&id=0002&');
 		http.expectJSONP(url).respond(200, list);
 
-		service.getById('1').then(function (response) {
+		service.getById('0002').then(function (response) {
 			expect(angular.isObject(response)).toBe(true);
-			expect(response.id).toBe(1);
+			expect(response.id).toBe('0002');
 		});
 
 		http.flush();
