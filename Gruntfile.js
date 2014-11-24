@@ -32,6 +32,10 @@ module.exports = function (grunt) {
 			sass: {
 				files: ['app/scss/**/*.scss'],
 				tasks: ['sass:dev']
+			},
+			js: {
+				files: ['app/js/photo/*.js', 'app/js/app.js'],
+				tasks: ['jshint', 'concat:app']
 			}
 		},
 
@@ -152,10 +156,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('test', 'Running tests', [
 		'jshint', 'htmlangular', 'karma'
-	]);
-
-	grunt.registerTask('watch', 'Watching styles', [
-		'sass:dev', 'watch'
 	]);
 
 	grunt.registerTask('dev', 'Compile and open', [
